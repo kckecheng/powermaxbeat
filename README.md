@@ -2,10 +2,7 @@
 
 **Warning: Preview Release, there may exist issues**
 
-Welcome to Powermaxbeat.
-
-Ensure that this folder is at the following location:
-`${GOPATH}/src/github.com/kckecheng/powermaxbeat`
+Powermaxbeat is an ELK stack beat for collecting performance metrics from Dell EMC PowerMax storage array. Currently, only the overall array metrics (such as IOPS, throughput, etc.) are supported. LUN and storage group level metrics collection support will be added in later releases.
 
 ## Getting Started with Powermaxbeat
 
