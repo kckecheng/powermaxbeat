@@ -15,7 +15,7 @@ type Config struct {
 }
 
 var DefaultConfig = Config{
-	Period:   30 * time.Second,
+	Period:   60 * time.Second,
 	Port:     "8443",
 	Username: "smc",
 	Password: "smc",

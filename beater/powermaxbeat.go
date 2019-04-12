@@ -51,8 +51,8 @@ func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
 	interval := int(bt.config.Period / time.Second)
 	// It is not recommended to query PowerMax performance through Unisphere too
 	// frequently since all 0 will be returned under such a condition
-	if interval < 30 {
-		return nil, fmt.Errorf("The configured period %d must be larger than 30", interval)
+	if interval < 60 {
+		return nil, fmt.Errorf("The configured period %d must be larger than 60", interval)
 	}
 	return bt, nil
 }
@@ -83,19 +83,16 @@ func (bt *Powermaxbeat) Run(b *beat.Beat) error {
 		event := beat.Event{
 			Timestamp: current_tm,
 			Fields: common.MapStr{
-				"type":                   "powermaxbeat",
-				"unisphere":              bt.config.Host,
-				"powermax":               bt.config.Symmid,
-				"iops(host)":             arrmetric.HostIOs,
-				"read(host)":             arrmetric.HostReads,
-				"write(host)":            arrmetric.HostWrites,
-				"throughput(host in MB)": arrmetric.HostMBReads + arrmetric.HostMBWritten,
-				"iops":                   arrmetric.FEReadReqs + arrmetric.FEWriteReqs,
-				"iops(read)":             arrmetric.FEReadReqs,
-				"iops(write)":            arrmetric.FEWriteReqs,
-				"rst(read)":              arrmetric.ReadResponseTime,
-				"rst(write)":             arrmetric.WriteResponseTime,
-				"utilization(FE)":        arrmetric.FEUtilization,
+				"type":             "powermaxbeat",
+				"unisphere":        bt.config.Host,
+				"powermax":         bt.config.Symmid,
+				"throughput(MB)":   arrmetric.HostMBReads + arrmetric.HostMBWritten,
+				"iops":             arrmetric.FEReadReqs + arrmetric.FEWriteReqs,
+				"iops(read)":       arrmetric.FEReadReqs,
+				"iops(write)":      arrmetric.FEWriteReqs,
+				"rst(read in ms)":  arrmetric.ReadResponseTime,
+				"rst(write in ms)": arrmetric.WriteResponseTime,
+				"usage(FE)":        arrmetric.FEUtilization,
 			},
 		}
 		bt.client.Publish(event)

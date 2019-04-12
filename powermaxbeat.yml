@@ -3,8 +3,8 @@
 ############################# Powermaxbeat ######################################
 
 powermaxbeat:
-  # Defines how often an event is sent to the output
-  period: 30s
+  # Defines how often an event is sent to the output, at least 60 seconds
+  period: 60s
   # Unisphere IP or FQDN
   host: ""
   # Unisphere port
