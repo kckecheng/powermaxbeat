@@ -4,7 +4,17 @@
 
 powermaxbeat:
   # Defines how often an event is sent to the output
-  period: 1s
+  period: 30s
+  # Unisphere IP or FQDN
+  host: ""
+  # Unisphere port
+  port: "8443"
+  # Unisphere login user
+  username: "smc"
+  # Unisphere login password
+  password: "smc"
+  # Symmetric ID of the PowerMax
+  symmid: ""
 
 #================================ General =====================================
 
