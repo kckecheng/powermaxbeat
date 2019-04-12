@@ -1,5 +1,7 @@
 # Powermaxbeat
 
+**Warning: Preview Release, there may exist issues**
+
 Welcome to Powermaxbeat.
 
 Ensure that this folder is at the following location:
